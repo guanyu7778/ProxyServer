@@ -1,0 +1,237 @@
+{
+    "entry":"https://maybelline.tmall.com/search.htm?spm=a1z10.3-b-s.w4011-21350826969.81.18047ff9ZujSca&prc=1&search=y&shopId=68295332&scene=taobao_shop&pageNo=1&tsearch=y#anchor",
+    "rule": {
+        "name": "default_product_list",
+        "action":[
+            {
+                "name":"close_login_popup",
+                "selector":".mui-dialog-close.mui-overlay-close",
+                "property":"before",
+                "action":"Click",
+                "actionValue":"href",
+                "frame":null,
+                "frameIndex":"//login.taobao.com/member/login.jhtml?tpl_redirect_url=",
+                "wait": false,
+                "queryAll":false
+            },
+            {
+                "name":"click_to_login_page",
+                "selector":"#login-info > a.sn-login",
+                "property":"before",
+                "action":"Click",
+                "actionValue":"href",
+                "frame":null,
+                "frameIndex":"//login.taobao.com/member/login.jhtml?tpl_redirect_url=",
+                "wait": true,
+                "queryAll":false
+            },
+            {
+                "name":"input_user_name",
+                "selector":"#fm-login-id",
+                "property":"before",
+                "action":"Input",
+                "actionValue":"DBUserAccountUserName",
+                "frame":"#J_loginIframe",
+                "frameIndex":"//login.taobao.com/member/login.jhtml?tpl_redirect_url=",
+                "wait": false,
+                "queryAll":false
+            },
+            {
+                "name":"input_password",
+                "selector":"#fm-login-password",
+                "property":"before",
+                "action":"Input",
+                "actionValue":"DBUserAccountPassword",
+                "frame":"#J_loginIframe",
+                "frameIndex":"//login.taobao.com/member/login.jhtml?tpl_redirect_url=",
+                "wait": false,
+                "queryAll":false
+            },
+            {
+                "name":"login",
+                "selector":"#login-form > div.fm-btn > button",
+                "property":"before",
+                "action":"Click",
+                "actionValue":"href",
+                "frame":"#J_loginIframe",
+                "frameIndex":"//login.taobao.com/member/login.jhtml?tpl_redirect_url=",
+                "wait": true,
+                "queryAll":false
+            },
+            {
+                "name":"product_list",
+                "selector":".J_SearchAsync.next",
+                "property":"later",
+                "action":"Goto",
+                "actionValue":"href",
+                "frame":null,
+                "frameIndex":"//",
+                "wait": false,
+                "queryAll":false
+            }
+        ],
+        "fields":[
+            {
+                "name": "product_item",
+                "selector":".item,.item last",
+                "queryAll":true,
+                "property":"",
+                "fields":[
+                    {
+                        "name": "price",
+                        "selector":"span.c-price",
+                        "queryAll":false,
+                        "property":"innerText",
+                        "fields":[]
+                   },
+                   {
+                        "name": "title",
+                        "selector":".item-name.J_TGoldData",
+                        "queryAll":false,
+                        "property":"innerText",
+                        "fields":[]
+                    },
+                    {
+                        "name": "link",
+                        "selector":".item-name.J_TGoldData",
+                        "queryAll":false,
+                        "property":"href",
+                        "fields":[]
+                    },
+                    {
+                        "name": "sales",
+                        "selector":".sale-num",
+                        "queryAll":false,
+                        "property":"innerText",
+                        "fields":[]
+                    },
+                    {
+                        "name": "rates",
+                        "selector":".rates > div > h4 > a > span",
+                        "queryAll":false,
+                        "property":"innerText",
+                        "fields":[]
+                    }
+                ]
+            }
+        ],
+        "childRule":[
+            {
+                "name": "product_list",
+                "action":[
+                    {
+                        "name":"close_login_popup",
+                        "selector":".mui-dialog-close.mui-overlay-close",
+                        "property":"before",
+                        "action":"Click",
+                        "actionValue":"href",
+                        "frame":null,
+                        "frameIndex":"//login.taobao.com/member/login.jhtml?tpl_redirect_url=",
+                        "wait": false,
+                        "queryAll":false
+                    },
+                    {
+                        "name":"click_to_login_page",
+                        "selector":"#login-info > a.sn-login",
+                        "property":"before",
+                        "action":"Click",
+                        "actionValue":"href",
+                        "frame":null,
+                        "frameIndex":"//login.taobao.com/member/login.jhtml?tpl_redirect_url=",
+                        "wait": true,
+                        "queryAll":false
+                    },
+                    {
+                        "name":"input_user_name",
+                        "selector":"#fm-login-id",
+                        "property":"before",
+                        "action":"Input",
+                        "actionValue":"DBUserAccountUserName",
+                        "frame":"#J_loginIframe",
+                        "frameIndex":"//login.taobao.com/member/login.jhtml?tpl_redirect_url=",
+                        "wait": false,
+                        "queryAll":false
+                    },
+                    {
+                        "name":"input_password",
+                        "selector":"#fm-login-password",
+                        "property":"before",
+                        "action":"Input",
+                        "actionValue":"DBUserAccountPassword",
+                        "frame":"#J_loginIframe",
+                        "frameIndex":"//login.taobao.com/member/login.jhtml?tpl_redirect_url=",
+                        "wait": false,
+                        "queryAll":false
+                    },
+                    {
+                        "name":"login",
+                        "selector":"#login-form > div.fm-btn > button",
+                        "property":"before",
+                        "action":"Click",
+                        "actionValue":"href",
+                        "frame":"#J_loginIframe",
+                        "frameIndex":"//login.taobao.com/member/login.jhtml?tpl_redirect_url=",
+                        "wait": true,
+                        "queryAll":false
+                    },
+                    {
+                        "name":"product_list",
+                        "selector":".J_SearchAsync.next",
+                        "property":"later",
+                        "action":"Goto",
+                        "actionValue":"href",
+                        "frame":null,
+                        "frameIndex":"",
+                        "wait": false,
+                        "queryAll":false
+                    }
+                ],
+                "fields":[
+                    {
+                        "name": "product_item",
+                        "selector":".item,.item last",
+                        "queryAll":true,
+                        "property":"",
+                        "fields":[
+                            {
+                                "name": "price",
+                                "selector":"span.c-price",
+                                "queryAll":false,
+                                "property":"innerText",
+                                "fields":[]
+                           },
+                           {
+                                "name": "title",
+                                "selector":".item-name.J_TGoldData",
+                                "queryAll":false,
+                                "property":"innerText",
+                                "fields":[]
+                            },
+                            {
+                                "name": "link",
+                                "selector":".item-name.J_TGoldData",
+                                "queryAll":false,
+                                "property":"href",
+                                "fields":[]
+                            },
+                            {
+                                "name": "sales",
+                                "selector":".sale-num",
+                                "queryAll":false,
+                                "property":"innerText",
+                                "fields":[]
+                            },
+                            {
+                                "name": "rates",
+                                "selector":".rates > div > h4 > a > span",
+                                "queryAll":false,
+                                "property":"innerText",
+                                "fields":[]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+ }

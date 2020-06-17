@@ -1,0 +1,176 @@
+{
+    "entry":"https://www.qb5.tw/top/monthvisit/",
+    "rule": {
+        "name": "default_booklist",
+        "action":[
+            {
+                "name":"booklist",
+                "selector":"#pagelink > a.next",
+                "property":"href",
+                "action":"Goto",
+                "value":"href",
+                "queryAll":false
+            }
+        ],
+        "fields":[
+            {
+                "name": "boolList",
+                "selector":"#articlelist > ul:nth-child(3) > li",
+                "queryAll":true,
+                "property":"",
+                "fields":[
+                    {
+                        "name": "type",
+                        "selector":"span.l1",
+                        "queryAll":false,
+                        "property":"innerText",
+                        "fields":[]
+                   },
+                   {
+                        "name": "title",
+                        "selector":"span.l2 > a",
+                        "queryAll":false,
+                        "property":"innerText",
+                        "fields":[]
+                    },
+                    {
+                        "name": "link",
+                        "selector":"span.l2 > a",
+                        "queryAll":false,
+                        "property":"href",
+                        "fields":[]
+                    },
+                    {
+                        "name": "auth",
+                        "selector":"span.l3",
+                        "queryAll":false,
+                        "property":"innerText",
+                        "fields":[]
+                    }
+                ]
+            }
+        ],
+        "childRule":[
+            {
+                "name": "booklist",
+                "action":[
+                    {
+                        "name":"booklist",
+                        "selector":"#pagelink > a.next",
+                        "property":"href",
+                        "action":"Goto",
+                        "value":"href",
+                        "queryAll":false
+                    }
+                ],
+                "fields":[
+                    {
+                        "name": "boolList",
+                        "selector":"#articlelist > ul:nth-child(3) > li",
+                        "queryAll":true,
+                        "property":"",
+                        "fields":[
+                            {
+                                "name": "type",
+                                "selector":"span.l1",
+                                "queryAll":false,
+                                "property":"innerText",
+                                "fields":[]
+                           },
+                           {
+                                "name": "title",
+                                "selector":"span.l2 > a",
+                                "queryAll":false,
+                                "property":"innerText",
+                                "fields":[]
+                            },
+                            {
+                                "name": "link",
+                                "selector":"span.l2 > a",
+                                "queryAll":false,
+                                "property":"href",
+                                "fields":[]
+                            },
+                            {
+                                "name": "auth",
+                                "selector":"span.l3",
+                                "queryAll":false,
+                                "property":"innerText",
+                                "fields":[]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+ }
+
+ //sku
+                        /*
+                        let skuParentElements = await CrawlerToolBox.FindElememts(page, ".tb-prop.tm-sale-prop.tm-clear", null, null, true);
+                        for(let i = 0; i < skuParentElements.length; i++)
+                        {
+                            let skuLineName = await CrawlerToolBox.FindElememtAndContent("innerText", page, ".tb-metatit", skuParentElements[i]);
+                            //sku item
+                            let skuLineField = Field.CreateFiled(pageData, itemFiled, "sku_line", skuLineName);
+                            let skuItemsList = await CrawlerToolBox.FindElememts(page, "li", skuParentElements[i], null, true);
+                            for(let j = 0; j < skuItemsList.length; j++)
+                            {
+                                let skuItemName = await CrawlerToolBox.FindElememtAndContent("innerText", page, "a > span", skuItemsList[i]);
+                                let skuItemField = Field.CreateFiled(pageData, skuLineField, "sku_iine_item", skuItemName);
+                                let skuItemId = await CrawlerToolBox.GetElememtContent(page, skuItemsList[i], "a > span");
+                                Field.CreateFiled(pageData, skuItemField, "sku_iine_item_id", skuItemId);
+                            }
+                        }
+                        //sku and price
+                        let CheckSKUAndPrice = async (index: number, lastNameAndId:{name:string, id:string}) => {
+                            skuParentElements = await CrawlerToolBox.FindElememts(page, ".tb-prop.tm-sale-prop.tm-clear", null, null, true);
+                            if(index >= skuParentElements.length)
+                            {
+                                return;
+                            }
+                            let skuItemsList = await CrawlerToolBox.FindElememts(page, "li", skuParentElements[index], null, true);
+                            for(let i = 0; i < skuItemsList.length; i++)
+                            {
+                                //查找点击的a 
+                                let skuItemId = await CrawlerToolBox.FindElememts(page, "a", skuItemsList[i], null, false);
+                                //如果元素可见，则点击
+                                let style = await CrawlerToolBox.GetElememtContent(page, skuItemsList[i], "style");
+                                if(style != undefined && style.indexOf("display:") >= 0)
+                                {
+                                    continue;
+                                }
+                                await skuItemId[0].click();
+                                await page.waitFor(500);
+                                let skuId = await CrawlerToolBox.GetElememtContent(page, skuItemsList[i], "data-value");
+                                let skuName = await CrawlerToolBox.GetElememtContent(page, skuItemsList[i], "title");
+                                //如果有下一级，则挨个点击下一级
+                                if(index == skuParentElements.length - 1)
+                                {
+                                    //查询价格，增加field
+                                    let priceElements = await CrawlerToolBox.FindElememts(page, ".tm-price", null, null, true);
+                                    if(priceElements.length > 0)
+                                    {
+                                        let skuPrice = Field.CreateFiled(pageData, itemFiled, "sku_price", 
+                                            lastNameAndId.name + "+" + skuName + "," + lastNameAndId.id + "+" + skuId);
+                                        let price = await CrawlerToolBox.GetElememtContent(page, priceElements[0], "innerText");
+                                        Field.CreateFiled(pageData, skuPrice, "price", price);
+                                        if(priceElements.length > 1)
+                                        {
+                                            let actionPrice = await CrawlerToolBox.GetElememtContent(page, priceElements[1], "innerText");
+                                            Field.CreateFiled(pageData, skuPrice, "action_price", actionPrice);
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    await CheckSKUAndPrice(index + 1, {
+                                        name: lastNameAndId.name + "+" + skuName, 
+                                        id: lastNameAndId.id + "+" + skuId
+                                    });
+                                }
+                            }
+                        };
+                        await CheckSKUAndPrice(0, {name: "", id: ""});
+                        */

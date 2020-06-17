@@ -1,0 +1,28 @@
+.content
+    .row
+        .col-md
+            .card
+                .card-header.bg-light
+                    p.h4 新建爬虫任务
+                    .col-md-12.float-left
+                        .input-group
+                            textarea.txtask(rows='1', style='width:100%')
+                                |* * * * * *
+                        .input-group
+                            textarea.tx(rows='20', style='width:100%')
+                                | {
+                                |    "url":"",
+                                |    "loop":false,
+                                |    "scheduleRule": "*  *  *  *  *  *",
+                                |    "rule": [
+                                |        {
+                                |            "field":"字段名",
+                                |            "value":"正则"
+                                |        }
+                                |    ]
+                                |}
+                        .input-group
+                            span.input-group-btn
+                                button.btn.btn-warning(type='button', onclick='OnStartClick()')
+                                    i.fa.fa-brands
+                                    |  开始抓取

@@ -1,0 +1,37 @@
+.content
+    .row
+        .col-md
+            .card
+                .card-header.bg-light
+                    p.h4 任务列表
+                .card-body
+                    .table-responsive
+                        table.table.table-striped
+                            thead
+                                tr
+                                    th 序号
+                                    th url
+                                    th 状态
+                                    th 内容
+                            tbody
+                                -var list = data
+                                -var ind = 1
+                                each item in list
+                                    tr
+                                        td= (currentPage - 1) * 10 + ind
+                                        td= item.url
+                                        td= item.status
+                                        td= item.result
+                                    -ind = ind + 1
+    .navbar
+        form.form-inline
+            a.active(href='javascript:void(0)', onclick='FilterDashboard()')
+                i 首页 |
+            a.active(href='javascript:void(0)', onclick='FilterDashboard(' + lastPage + ')')
+                i | 上一页 |
+            a.active(href='javascript:void(0)', onclick='FilterDashboard(' + nextPage + ')')
+                i | 下一页 |
+            a.active(href='javascript:void(0)', onclick='FilterDashboard(' + lastestPage + ')')
+                i | 尾页
+        a.disabled(href='javascript:void(0)')
+            i= "当前第 " + currentPage + " 页，共 " + totolePage + " 页"

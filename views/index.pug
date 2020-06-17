@@ -1,0 +1,71 @@
+doctype html
+html
+    head
+        meta(charset='UTF-8')
+        meta(name='viewport', content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0')
+        meta(http-equiv='X-UA-Compatible', content='ie=edge')
+        title 管理后台
+        link(rel='stylesheet', href='./vendor/simple-line-icons/css/simple-line-icons.css')
+        link(rel='stylesheet', href='./vendor/font-awesome/css/fontawesome-all.min.css')
+        link(rel='stylesheet', href='./css/styles.css')
+        link(rel='stylesheet', href='./css/addStyles.css')
+        link(rel='stylesheet', href='./css/bootstrap-datepicker3.min.css')
+    body.sidebar-fixed.header-fixed
+        .page-wrapper
+            nav.navbar.page-header
+                a.btn.btn-link.sidebar-mobile-toggle.d-md-none.mr-auto(href='#')
+                    i.fa.fa-bars
+                a.btn.btn-link.sidebar-toggle.d-md-down-none(href='#')
+                    i.fa.fa-bars
+                ul.navbar-nav.ml-auto
+                    li.nav-item.dropdown
+                        a.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                            img.avatar.avatar-sm(src='./imgs/avatar-1.png', alt='logo')
+                            span.small.ml-1.d-md-down-none #{userName}
+                        .dropdown-menu.dropdown-menu-right
+                            a.dropdown-item(href='javascript:void(0)', onclick='OnLogoutBtnClick()')
+                                i.fa.fa-lock
+                                |  退出登录
+            .main-container
+                .sidebar
+                    nav.sidebar-nav
+                        ul.nav
+                            li.nav-title 爬虫后台
+                            li.nav-item
+                                a.nav-link.active(href='javascript:void(0)', onclick='OnControlTabClick(this, 1)')
+                                    i.icon.icon-speedometer
+                                    |  新建爬虫
+                            li.nav-item
+                                a.nav-link.active(href='javascript:void(0)', onclick='OnControlTabClick(this, 2)')
+                                    i.icon.icon-speedometer
+                                    |  爬虫任务列表
+                            li.nav-title @inc. 版权所有
+        #modal-6.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', style='display: none;', aria-hidden='true')
+            #modal6-container.modal-dialog(role='document')
+        #modal-8.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', style='display: none;', aria-hidden='true')
+            #modal8-container.modal-dialog.modal-big(role='document')
+        #modal-1.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
+            .modal-dialog(role='document')
+                .modal-content
+                    .modal-header
+                        h5#alertTitle.modal-title Modal title
+                        button.close(type='button', data-dismiss='modal', aria-label='Close')
+                            span(aria-hidden='true') ×
+                    #alertBody.modal-body
+                        | Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        | Pellentesque lacinia non massa a euismod.
+                    .modal-footer
+                        button.btn.btn-link(type='button', data-dismiss='modal') 关闭
+        script(src='./vendor/jquery/jquery.min.js')
+        script(src='./vendor/popper.js/popper.min.js')
+        script(src='./vendor/bootstrap/js/bootstrap.min.js')
+        script(src='./vendor/chart.js/chart.min.js')
+        script(src='./js/carbon.js')
+        script(src='./js/weblib.js')
+        script(src='./js/distpicker.js')
+        script(src='./js/bootstrap-datepicker.min.js')
+        script(src='./js/bootstrap-datepicker.zh-CN.min.js')
+        script.
+            $(document).ready(function() {
+                ShowDashBoard()
+            })

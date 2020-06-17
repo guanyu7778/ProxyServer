@@ -1,0 +1,49 @@
+doctype html
+html(lang='en')
+    head
+        meta(charset='UTF-8')
+        meta(name='viewport', content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0')
+        meta(http-equiv='X-UA-Compatible', content='ie=edge')
+        title 登录
+        link(rel='stylesheet', href='./vendor/simple-line-icons/css/simple-line-icons.css')
+        link(rel='stylesheet', href='./vendor/font-awesome/css/fontawesome-all.min.css')
+        link(rel='stylesheet', href='./css/styles.css')
+    body
+        .page-wrapper.flex-row.align-items-center
+            .container
+                .row.justify-content-center
+                    .col-md-5
+                        .card.p-4
+                            .card-header.text-center.text-uppercase.h4.font-weight-light
+                                | 登录
+                            .card-body.py-5
+                                .form-group
+                                    label.form-control-label 账号
+                                    input#name.form-control(type='text')
+                                .form-group
+                                    label.form-control-label 密码
+                                    input#password.form-control(type='password')
+                                .custom-control.custom-checkbox.mt-4(hidden='hidden')
+                                    input#login.custom-control-input(type='checkbox')
+                                    label.custom-control-label(for='login') 下次自动登录
+                            .card-footer
+                                .row
+                                    button#loginbtn.btn.btn-primary.btn-block(type='submit') 登录
+        script(src='./vendor/jquery/jquery.min.js')
+        script.
+            $('#loginbtn').click(function(evt){
+                evt.preventDefault();
+                $.ajax({
+                    url: '/login',
+                    type: 'POST',
+                    data: {
+                        name: $('#name').val(),
+                        password: $('#password').val(),
+                        remember: $('#login').val()
+                    },success: function(data){
+                        if(data.result == "ok"){
+                            location.href="/";
+                        }
+                    }
+                });
+            });

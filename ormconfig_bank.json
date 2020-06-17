@@ -1,0 +1,38 @@
+[
+   {
+      "name": "default",
+      "type": "mysql",
+      "host": "47.96.131.169",
+      "port": 3306,
+      "username": "crawler",
+      "password": "guanyu65",
+      "database": "crawler",
+      "synchronize": true,
+      "useUnifiedTopology": true,
+      "logging": true,
+      "entities": [
+         "../entity/*.js"
+      ],
+      "cli": {
+         "entitiesDir": "./src/entity"
+      }
+   },
+   {
+      "name": "schedule",
+      "type": "mysql",
+      "host": "47.96.131.169",
+      "port": 3306,
+      "username": "crawler",
+      "password": "guanyu65",
+      "database": "crawler",
+      "synchronize": true,
+      "useUnifiedTopology": true,
+      "logging": true,
+      "entities": [
+         "./build/entity/*.js"
+      ],
+      "cli": {
+         "entitiesDir": "./src/entity"
+      }
+   }
+]
