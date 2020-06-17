@@ -32,7 +32,7 @@ export class EnvConfig
     public static BROWSER_PATH: string = "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe";
     public static BROWSER_HEADLESS: boolean = false;
     public static AMQP_TASKPIN: string = "cmd:task_test, type:sche";
-    public static AMQP_WORKPIN: string = "cmd:work_test, type:once";
+    public static AMQP_PROXYPIN: string = "cmd:proxy_test, type:sche";
     public static AMQP_CONFIG_TASK = {
         type: 'amqp',
         hostname: '121.36.145.84',
@@ -41,12 +41,12 @@ export class EnvConfig
         password: 'guanyu65',
         pin: EnvConfig.AMQP_TASKPIN
     };
-    public static AMQP_CONFIG_WORK = {
+    public static AMQP_CONFIG_PROXY = {
         type: 'amqp',
         hostname: '121.36.145.84',
         port: 5672,
         username: 'guest',
         password: 'guanyu65',
-        pin: EnvConfig.AMQP_WORKPIN
+        pin: EnvConfig.AMQP_PROXYPIN
     };
 }

@@ -18,13 +18,13 @@
       }
    },
    {
-      "name": "schedule",
+      "name": "proxy",
       "type": "mysql",
       "host": "47.96.131.169",
       "port": 3306,
       "username": "crawler",
       "password": "guanyu65",
-      "database": "crawler",
+      "database": "proxy_server",
       "synchronize": true,
       "useUnifiedTopology": true,
       "logging": false,

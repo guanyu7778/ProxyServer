@@ -32,7 +32,7 @@ class EnvConfig {
 EnvConfig.BROWSER_PATH = "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe";
 EnvConfig.BROWSER_HEADLESS = false;
 EnvConfig.AMQP_TASKPIN = "cmd:task_test, type:sche";
-EnvConfig.AMQP_WORKPIN = "cmd:work_test, type:once";
+EnvConfig.AMQP_PROXYPIN = "cmd:proxy_test, type:sche";
 EnvConfig.AMQP_CONFIG_TASK = {
     type: 'amqp',
     hostname: '121.36.145.84',
@@ -41,13 +41,13 @@ EnvConfig.AMQP_CONFIG_TASK = {
     password: 'guanyu65',
     pin: EnvConfig.AMQP_TASKPIN
 };
-EnvConfig.AMQP_CONFIG_WORK = {
+EnvConfig.AMQP_CONFIG_PROXY = {
     type: 'amqp',
     hostname: '121.36.145.84',
     port: 5672,
     username: 'guest',
     password: 'guanyu65',
-    pin: EnvConfig.AMQP_WORKPIN
+    pin: EnvConfig.AMQP_PROXYPIN
 };
 exports.EnvConfig = EnvConfig;
 //# sourceMappingURL=ExtentsionTypes.js.map
