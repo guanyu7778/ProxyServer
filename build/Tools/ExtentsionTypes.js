@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.EnvConfig = exports.NextPageAction = exports.PageActionOrder = exports.PageActionType = exports.ScheduleStatus = void 0;
 var ScheduleStatus;
 (function (ScheduleStatus) {
     ScheduleStatus["Idle"] = "\u7B49\u5F85\u4E2D";
@@ -29,10 +30,12 @@ class NextPageAction {
 exports.NextPageAction = NextPageAction;
 class EnvConfig {
 }
+exports.EnvConfig = EnvConfig;
 EnvConfig.BROWSER_PATH = "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe";
 EnvConfig.BROWSER_HEADLESS = false;
 EnvConfig.AMQP_TASKPIN = "cmd:task_test, type:sche";
 EnvConfig.AMQP_PROXYPIN = "cmd:proxy_test, type:sche";
+EnvConfig.AMQP_PROXY_VER_PIN = "cmd:proxy_verifytest, type:work";
 EnvConfig.AMQP_CONFIG_TASK = {
     type: 'amqp',
     hostname: '121.36.145.84',
@@ -49,5 +52,12 @@ EnvConfig.AMQP_CONFIG_PROXY = {
     password: 'guanyu65',
     pin: EnvConfig.AMQP_PROXYPIN
 };
-exports.EnvConfig = EnvConfig;
+EnvConfig.AMQP_CONFIG_PROXY_VER = {
+    type: 'amqp',
+    hostname: '121.36.145.84',
+    port: 5672,
+    username: 'guest',
+    password: 'guanyu65',
+    pin: EnvConfig.AMQP_PROXY_VER_PIN
+};
 //# sourceMappingURL=ExtentsionTypes.js.map

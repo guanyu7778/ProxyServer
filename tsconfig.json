@@ -11,6 +11,6 @@
       "experimentalDecorators": true,
       "sourceMap": true
    },
-   "include": ["./src/**/*"],
+   "include": ["./src/**/*", "src/bin/HomeController.js"],
    "exclude": ["./node_modules/**/*"]
 }

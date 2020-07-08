@@ -33,6 +33,7 @@ export class EnvConfig
     public static BROWSER_HEADLESS: boolean = false;
     public static AMQP_TASKPIN: string = "cmd:task_test, type:sche";
     public static AMQP_PROXYPIN: string = "cmd:proxy_test, type:sche";
+    public static AMQP_PROXY_VER_PIN: string = "cmd:proxy_verifytest, type:work";
     public static AMQP_CONFIG_TASK = {
         type: 'amqp',
         hostname: '121.36.145.84',
@@ -48,5 +49,13 @@ export class EnvConfig
         username: 'guest',
         password: 'guanyu65',
         pin: EnvConfig.AMQP_PROXYPIN
+    };
+    public static AMQP_CONFIG_PROXY_VER = {
+        type: 'amqp',
+        hostname: '121.36.145.84',
+        port: 5672,
+        username: 'guest',
+        password: 'guanyu65',
+        pin: EnvConfig.AMQP_PROXY_VER_PIN
     };
 }

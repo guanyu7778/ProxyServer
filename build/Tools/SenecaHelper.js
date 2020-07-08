@@ -1,18 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const ExtentsionTypes_1 = require("./ExtentsionTypes");
 let seneca = require("seneca");
 class SenecaHelper {
-    //添加大任务到RabbitMQ
-    static AddTask(taskId, config, pin) {
-        let client = seneca({ legacy: { meta: true }, timeout: 6000000 })
+    static AddProxyVerifyTask(iplist) {
+        let client = seneca({ legacy: { meta: true }, timeout: 6000, log: { level: 'warn+' } })
             .use('seneca-amqp-transport')
-            .client(config);
-        client.act(pin, { taskId: taskId }, (err, response) => {
-            if (err)
-                console.log(err);
-            else
-                console.log(response);
-        });
+            .client(ExtentsionTypes_1.EnvConfig.AMQP_CONFIG_PROXY_VER);
+        client.act(ExtentsionTypes_1.EnvConfig.AMQP_PROXY_VER_PIN, { ipList: iplist });
     }
 }
 exports.default = SenecaHelper;

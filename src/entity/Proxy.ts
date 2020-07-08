@@ -24,4 +24,6 @@ export class Proxy {
 
     @Column()
     public isActive: boolean;
+    @Column()
+    public time: Date;
 }

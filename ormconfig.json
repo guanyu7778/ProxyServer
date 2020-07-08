@@ -20,16 +20,16 @@
    {
       "name": "proxy",
       "type": "mysql",
-      "host": "47.96.131.169",
+      "host": "121.36.164.82",
       "port": 3306,
       "username": "crawler",
-      "password": "guanyu65",
+      "password": "@icube3d",
       "database": "proxy_server",
       "synchronize": true,
       "useUnifiedTopology": true,
       "logging": false,
       "entities": [
-         "../entity/*.js"
+         "./build/entity/*.js"
       ],
       "cli": {
          "entitiesDir": "./src/entity"

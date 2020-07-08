@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Proxy = void 0;
 const typeorm_1 = require("typeorm");
 let Proxy = class Proxy {
 };
@@ -28,6 +29,10 @@ __decorate([
     typeorm_1.Column(),
     __metadata("design:type", Boolean)
 ], Proxy.prototype, "isActive", void 0);
+__decorate([
+    typeorm_1.Column(),
+    __metadata("design:type", Date)
+], Proxy.prototype, "time", void 0);
 Proxy = __decorate([
     typeorm_1.Entity()
 ], Proxy);
