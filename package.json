@@ -30,7 +30,7 @@
       "curl": "^0.1.4",
       "debug": "~2.6.9",
       "egg": "^2.26.1",
-      "express": "^4.17.1",
+      "express": "^4.17.3",
       "express-session": "^1.17.0",
       "express-xml-bodyparser": "^0.3.0",
       "gaxios": "^3.0.3",
